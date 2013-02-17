@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>eu.danieldk.alfred.Viscosity</string>
+	<key>connections</key>
+	<dict>
+		<key>56801621-22F9-4165-AEE0-E5E283659352</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C1948217-A16B-4904-A737-916C24836C06</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Daniël de Kok</string>
+	<key>description</key>
+	<string>Connect to OpenVPNs using Viscosity</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Viscosity</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>keyword</key>
+				<string>vis</string>
+				<key>runningsubtext</key>
+				<string>Searching for connections…</string>
+				<key>script</key>
+				<string>import connection_list
+
+print connection_list.getConnections(r"{query}")</string>
+				<key>title</key>
+				<string>Connect or disconnect a Viscosity VPN</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>56801621-22F9-4165-AEE0-E5E283659352</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+	tell application "Viscosity"		set connectionState to state of first connection where name = q			if connectionState is equal to "Disconnected" then			connect q		else			disconnect q		end if	end tell
+end alfred_script</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>C1948217-A16B-4904-A737-916C24836C06</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>56801621-22F9-4165-AEE0-E5E283659352</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>C1948217-A16B-4904-A737-916C24836C06</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://danieldk.eu/</string>
+</dict>
+</plist>
